@@ -1,59 +1,63 @@
-NAME = minitalk
-CLIENT = client
-SERVER = server
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/09/26 16:17:44 by juanantonio       #+#    #+#              #
+#    Updated: 2023/09/26 17:03:35 by juanantonio      ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror 
+NAME = so_long
 
-SRC_SRV = src/server.c 
-SRC_CLNT = src/client.c 
-	
-OBJS_SRV = $(SRC_SRV:.c=.o) 
-DEPS_SRV = $(SRC_SRV:.c=.d)
+CFLAGS = -Wall -Wextra -Werror -MMD
 
-OBJS_CLT = $(SRC_CLNT:.c=.o) 
-DEPS_CLT = $(SRC_CLNT:.c=.d)
+SRC = src/so_long.c
 
-RM = rm -f
+OBJS = $(SRC:.c=.o)
+DEPS = $(SRC:.c=.d)
 
-MTLK = libs/mini_talk.h
-LIBFT_DIR = libs/MyLibft
-LIBFT =  libs/MyLibft/libft.a
-LIBS = $(MTLK) ##$(LIBFT)
+RM = rm -rf
+
+MLX = Libs/mlx
+LIBFT = Libs/MyLibft
+LIBS = Libs/MyLibft/libft.a Libs/mlx/libmlx.a
+
+
 GREEN = \033[1;92m
 RED = \033[1;91m
 NC = \033[0m
 
-%.o: %.c $(MTLK) Makefile
-	@$(CC) $(CFLAGS) -MMD -g -I./ -c $< -o $@
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c Makefile
+	@$(CC) $(CFLAGS) -I./ -c $< -o $@
 
 all:
-	@$(MAKE) -C $(LIBFT_DIR)
-	@$(MAKE) $(SERVER)
-	@$(MAKE) $(CLIENT)
+	@$(MAKE) -C $(LIBFT) --no-print-directory
+	@$(MAKE) -C $(MLX) --no-print-directory
+	@$(MAKE) $(NAME) --no-print-directory
 	
 
-$(SERVER):: $(OBJS_SRV)
-	@$(CC) $(OBJS_SRV) $(LIBFT) -o $@
-	@echo "$(GREEN)Server compiled$(NC)"
-
-$(CLIENT):: $(OBJS_CLT)
-	@$(CC) $(OBJS_CLT) $(LIBFT) -o $@
-	@echo "$(GREEN)Client compiled$(NC)"
+$(NAME):: $(OBJS)
+	
+	@$(CC) -framework OpenGL -framework Appkit $(CFLAGS) $(OBJS) $(LIBS) -o $@
+	@echo "$(GREEN)so_long compiled$(NC)"
 
 $(NAME)::
 	@echo -n
-	
+
 clean:
-	@$(RM) $(OBJS_SRV) $(DEPS_SRV) $(OBJS_CLT) $(DEPS_CLT) $(OBJBONUS) $(DEPBONUS)
-	@$(MAKE) clean -C $(LIBFT_DIR)
-	@echo "$(RED)\nCleaned all files succesfully\n$(NC)"
+	@$(RM) $(OBJS) $(DEPS) --no-print-directory
+	@$(MAKE) clean -C  $(MLX) --no-print-directory
+	@$(MAKE) clean -C  $(LIBFT) --no-print-directory
+	@echo "$(RED)\ndestruction successful\n$(NC)"
 
 fclean: clean
-	@$(RM) $(NAME) $(SERVER) $(CLIENT) $(LIBFT)
+	@$(RM) $(NAME) $(LIBS) 
 
 re: fclean all
 
 .PHONY: all clean fclean re bonus
 
 -include $(DEPS)
--include $(DEPBONUS)
