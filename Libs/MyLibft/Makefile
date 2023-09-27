@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juan-anm <juan-anm@student.42barcel>       +#+  +:+       +#+         #
+#    By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 11:15:53 by juan-anm          #+#    #+#              #
-#    Updated: 2023/06/02 13:21:51 by juan-anm         ###   ########.fr        #
+#    Updated: 2023/09/27 13:21:26 by juan-anm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,10 @@ OBJSBONUS = $(SRCSBONUS:.c=.o)
 OBJSGNL = $(SRCSGNL:.c=.o)
 OBJSPRINTF = $(SRCSPRINTF:.c=.o)
 
+GREEN = \033[1;92m
+RED = \033[1;91m
+NC = \033[0m
+
 RM = rm -f
 DEPS = $(SRCS:.c=.d)
 DEPSBONUS = $(SRCSBONUS:.c=.d)
@@ -40,18 +44,20 @@ DEPSGNL = $(SRCSGNL:.c=.d)
 DEPSPRINTF = $(SRCSPRINTF:.c=.d)
 
 %.o: %.c $(INCLUDE) Makefile
-	$(CC) $(CFLAGS) -MMD -I $(INCLUDE) -c $< -o $@
+	@$(CC) $(CFLAGS) -MMD -I $(INCLUDE) -c $< -o $@
 	
 all: $(NAME)
 
 $(NAME)::$(OBJS) $(OBJSBONUS) $(OBJSGNL) $(OBJSPRINTF)
-	ar crs $(NAME) $(OBJS) $(OBJSBONUS) $(OBJSGNL) $(OBJSPRINTF)
+	@ar crs $(NAME) $(OBJS) $(OBJSBONUS) $(OBJSGNL) $(OBJSPRINTF)
+	@echo "$(GREEN)MyLibft compiled$(NC)"
 
 $(NAME)::
 	@echo -n
 
 clean:
-	$(RM) $(OBJS) $(DEPS) $(OBJSBONUS) $(DEPSBONUS) $(OBJSGNL) $(DEPSGNL) $(OBJSPRINTF) $(DEPSPRINTF)
+	@$(RM) $(OBJS) $(DEPS) $(OBJSBONUS) $(DEPSBONUS) $(OBJSGNL) $(DEPSGNL) $(OBJSPRINTF) $(DEPSPRINTF)
+	@echo "$(RED)MyLibft objects destroyed$(NC)"
 
 fclean: clean
 	$(RM) $(NAME) $(BNAME)

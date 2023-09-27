@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+         #
+#    By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 16:17:44 by juanantonio       #+#    #+#              #
-#    Updated: 2023/09/26 17:03:35 by juanantonio      ###   ########.fr        #
+#    Updated: 2023/09/27 13:21:12 by juan-anm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ clean:
 	@$(RM) $(OBJS) $(DEPS) --no-print-directory
 	@$(MAKE) clean -C  $(MLX) --no-print-directory
 	@$(MAKE) clean -C  $(LIBFT) --no-print-directory
-	@echo "$(RED)\ndestruction successful\n$(NC)"
+	@echo "$(GREEN)All Files Deleted Successfully$(NC)"
 
 fclean: clean
 	@$(RM) $(NAME) $(LIBS) 

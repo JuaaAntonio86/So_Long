@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
+/*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:12:16 by juan-anm          #+#    #+#             */
-/*   Updated: 2023/08/07 00:08:36 by juanantonio      ###   ########.fr       */
+/*   Updated: 2023/09/27 13:19:02 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,15 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /*/////////////////   FT_PRINT    !!!!!!!!!////////////////\*/
 
-int	ft_printf(const char *str, ...);
-int	ft_typesort(va_list val, char c);
-int	ft_putchars(char c);
-int	ft_typesort(va_list val, char c);
-int	ft_putstrs(char *str);
-int	ft_putnbrs(long long int n, int cont);
-int	ft_base_cnvrt(unsigned int nbr, char x);
-int	ft_base_pointer(unsigned long long pntr);
-int	ft_unsputnbrs(long long int n, int cont);
+int		ft_printf(const char *str, ...);
+int		ft_typesort(va_list val, char c);
+int		ft_putchars(char c);
+int		ft_typesort(va_list val, char c);
+int		ft_putstrs(char *str);
+int		ft_putnbrs(long long int n, int cont);
+int		ft_base_cnvrt(unsigned int nbr, char x);
+int		ft_base_pointer(unsigned long long pntr);
+int		ft_unsputnbrs(long long int n, int cont);
 
 /*/////////////////   GetNextLine    !!!!!!!!!////////////////\*/
 

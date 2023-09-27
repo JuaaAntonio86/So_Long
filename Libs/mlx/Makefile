@@ -59,19 +59,19 @@ all		:
 $(NOM)::	$(OBJ_C) $(OBJ_M)
 	@ar -crs $@ $(OBJ_C) $(OBJ_M)
 	@#ranlib $@
-	@echo "$(GREEN)mlx compiled$(NC)"
+	@echo "$(GREEN)MiniLibX compiled$(NC)"
 $(NOM)::
 	@echo -n
 
 clean	:
 	@rm -rf $(OBJ_DIR) *~
 	@rm -f mlx_app
-	@echo "$(RED)mlx objects deleted$(NC)"
+	@echo "$(RED)MiniLibX objects destroyed$(NC)"
 
 fclean	:
 	@$(MAKE) clean
 	@$(RM) $(NOM)
-	@echo "$(RED)mlx exec deleted$(NC)"
+	@echo "$(RED)MiniLibX exec deleted$(NC)"
 
 re: fclean all
 
