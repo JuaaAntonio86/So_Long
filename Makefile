@@ -6,7 +6,7 @@
 #    By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 16:17:44 by juanantonio       #+#    #+#              #
-#    Updated: 2023/09/27 13:21:12 by juan-anm         ###   ########.fr        #
+#    Updated: 2023/09/27 13:32:23 by juan-anm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = so_long
 
 CFLAGS = -Wall -Wextra -Werror -MMD
 
-SRC = src/so_long.c
+SRC = 	src/main.c src/map_checker.c src/path_finder.c src/events.c \
+		src/render_map.c src/movements.c
 
 OBJS = $(SRC:.c=.o)
 DEPS = $(SRC:.c=.d)

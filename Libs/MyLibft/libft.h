@@ -6,7 +6,7 @@
 /*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:12:16 by juan-anm          #+#    #+#             */
-/*   Updated: 2023/09/27 13:19:02 by juan-anm         ###   ########.fr       */
+/*   Updated: 2023/09/27 13:28:36 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
+void	*ft_freesp(char **m);
 
 /*////////////////!!!!!!   BONUS  !!!!!\\\\\\\\\\\\\\\\\*/
 typedef struct s_list
