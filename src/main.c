@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 15:06:41 by ccaballe          #+#    #+#             */
-/*   Updated: 2023/09/27 10:05:29 by juan-anm         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:04:44 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 		ft_error(0, "ERROR\nPlease enter an argument\n");
 	init_game(argv[1], &game, &s);
 	new_program(&win, &game);
-	//intro(&win, &game);
+	intro(&win, &game);
 	if (!win.mlx_ptr || !win.win_ptr)
 		ft_error(1, "ERROR\nProblems with mlx");
 	init_sprites(&win, &game);
@@ -78,9 +78,12 @@ void	intro(t_win *win, t_game *game)
 	char	*str;
 	int		x;
 	int		y;
+	void *png;
+	int		a;
+	int		b;
 
-	x = game->len * 32 / 3;
-	y = game->heig * 32 / 3;
+	x = game->len * 64 / 3;
+	y = game->heig * 64 / 3;
 	str = "Welcome to my game!";
 	mlx_string_put(win->mlx_ptr, win->win_ptr, x, y, 0x00FFFFFF, str);
 	str = "Collect all the treasures";
@@ -89,4 +92,6 @@ void	intro(t_win *win, t_game *game)
 	mlx_string_put(win->mlx_ptr, win->win_ptr, x, y + 42, 0x00FFFFFF, str);
 	str = "Press space to start";
 	mlx_string_put(win->mlx_ptr, win->win_ptr, x, y + 74, 0x00FFFFFF, str);
+	png = mlx_xpm_file_to_image(win->mlx_ptr, "sprites/GameOver.xpm", &a, &b);
+	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, png, x , y );
 }

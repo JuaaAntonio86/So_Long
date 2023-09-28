@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:04:51 by ccaballe          #+#    #+#             */
-/*   Updated: 2023/09/27 13:35:57 by juan-anm         ###   ########.fr       */
+/*   Updated: 2023/09/28 13:30:54 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ void	check_map(char *file, t_game *game)
 	char	*str_map;
 
 	str_map = NULL;
-	if (ft_strlen(ft_strnstr(file, ".ber", 4)) != 4)
-		ft_error(1, "ERROR\nFile should be .ber type\n");
+	//if (ft_strlen((int)ft_strstr(file, ".ber")) != 4)
+	//if (ft_strnstr(file, ".ber", 4) != 0)
+	//	ft_error(1, "ERROR\nFile should be .ber type\n");
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		ft_error(1, "ERROR\nFile does not open\n");

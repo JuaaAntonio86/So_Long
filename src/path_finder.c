@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_finder.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccaballe <ccaballe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:21:54 by ccaballe          #+#    #+#             */
-/*   Updated: 2023/05/11 13:09:16 by ccaballe         ###   ########.fr       */
+/*   Updated: 2023/09/28 12:36:40 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	path_checker(t_game *game)
 	}
 	game->check.collected = 0;
 	game->check.exit = 0;
-	matrix_free(map);
+	ft_freesp(map);
 }
 
 char	**temp_map(t_game *game)
@@ -53,7 +53,7 @@ char	**temp_map(t_game *game)
 		map[i] = ft_substr(game->map[i], 0, game->len);
 		if (!map[i])
 		{
-			matrix_free(map);
+			ft_freesp(map);
 			ft_error(1, "ERROR: Could not allocate memory");
 		}
 	}

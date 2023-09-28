@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+         #
+#    By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 16:17:44 by juanantonio       #+#    #+#              #
-#    Updated: 2023/09/27 13:32:23 by juan-anm         ###   ########.fr        #
+#    Updated: 2023/09/28 12:43:40 by juanantonio      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-CFLAGS = -Wall -Wextra -Werror -MMD
+CFLAGS = -Wall -Wextra -Werror -MMD 
 
 SRC = 	src/main.c src/map_checker.c src/path_finder.c src/events.c \
 		src/render_map.c src/movements.c
@@ -32,7 +32,7 @@ RED = \033[1;91m
 NC = \033[0m
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c Makefile
-	@$(CC) $(CFLAGS) -I./ -c $< -o $@
+	@$(CC) $(CFLAGS) -g -I./ -c $< -o $@
 
 all:
 	@$(MAKE) -C $(LIBFT) --no-print-directory

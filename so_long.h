@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:09:17 by juanantonio       #+#    #+#             */
-/*   Updated: 2023/09/27 13:27:38 by juan-anm         ###   ########.fr       */
+/*   Updated: 2023/09/28 12:39:38 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ typedef struct s_sprites
 	void	*wall;
 	void	*coll;
 	void	*exit;
+	void	*opexit;
+	t_point expos;
 }	t_sprites;
 
 typedef struct s_game

@@ -34,7 +34,7 @@ NOM		=	libmlx.a
 #<---SRC && OTHERS--->#
 OBJ_DIR	=	./obj/
 
-SRC_C	=	mlx_shaders.c mlx_xpm.c mlx_int_str_to_wordtab.c
+SRC_C	=	mlx_shaders.c mlx_xpm.c mlx_int_str_to_wordtab.c 
 SRC_M	= 	mlx_new_image.m mlx_new_window.m mlx_init_loop.m
 
 OBJ_C	=	$(addprefix $(OBJ_DIR)src_c/, $(SRC_C:%.c=%.o)) #$(SRC_C:%.c=%.o) 
