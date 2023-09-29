@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/02 12:38:52 by ccaballe          #+#    #+#             */
-/*   Updated: 2023/09/29 11:07:41 by juan-anm         ###   ########.fr       */
+/*   Created: 2023/09/29 11:43:37 by juan-anm          #+#    #+#             */
+/*   Updated: 2023/09/29 13:42:17 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ void	outro(t_win *win, t_game *game)
 	char	*str;
 	int		x;
 	int		y;
+	void	*png;
 
-	ft_printf("Congratulations you won !!!\n");
+	ft_printf("Game Over!\n");
 	y = -1;
 	while (++y < win->h)
 	{
@@ -35,10 +36,10 @@ void	outro(t_win *win, t_game *game)
 	}
 	x = game->len * 64 / 3;
 	y = game->heig * 64 / 3;
-	str = "Congratulations you won!";
-	mlx_string_put(win->mlx_ptr, win->win_ptr, x, y, 0x00FFFFFF, str);
+	png = mlx_xpm_file_to_image(win->mlx_ptr, "sprites/GameOver.xpm", &x, &y);
+	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, png, 0, 64);
 	str = "Press ESC to exit";
-	mlx_string_put(win->mlx_ptr, win->win_ptr, x, y + 64, 0x00FFFFFF, str);
+	mlx_string_put(win->mlx_ptr, win->win_ptr, 1, 15, 0x00FFFFFF, str);
 	game->check.start = 0;
 }
 
@@ -50,7 +51,7 @@ int	manage_keys(int key, t_game	*game)
 	new.y = game->pos.y;
 	if (key == ESC)
 		close_window(game);
-	else if (key >= 0 && game->check.start == 0 )
+	else if (key == SPACE && game->check.start == 0)
 	{
 		game->check.start = 1;
 		render_map(game, game->win);

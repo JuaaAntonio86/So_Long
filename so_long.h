@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
+/*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:09:17 by juanantonio       #+#    #+#             */
-/*   Updated: 2023/09/28 12:39:38 by juanantonio      ###   ########.fr       */
+/*   Updated: 2023/09/29 12:37:46 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ typedef struct s_sprites
 	void	*coll;
 	void	*exit;
 	void	*opexit;
-	t_point expos;
+	t_point	expos;
 }	t_sprites;
 
 typedef struct s_game
@@ -91,6 +91,7 @@ void	new_program(t_win *win, t_game *game);
 void	intro(t_win *win, t_game *game);
 
 //map_checker
+int		check_file(char *file, char *ext);
 void	check_map(char *file, t_game *game);
 void	valid_line(char *line, t_game *game);
 void	check_items(t_game *game);
@@ -114,5 +115,6 @@ void	collect_item(t_game *game, int x, int y, char item);
 //images
 void	render_map(t_game *game, t_win *win);
 void	init_sprites(t_win *win, t_game *game);
+void	exit_pos(t_game *game, t_win *win, int x, int y);
 
 #endif

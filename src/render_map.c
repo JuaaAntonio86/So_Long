@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
+/*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 12:43:56 by ccaballe          #+#    #+#             */
-/*   Updated: 2023/09/28 12:40:07 by juanantonio      ###   ########.fr       */
+/*   Created: 2023/09/29 11:44:35 by juan-anm          #+#    #+#             */
+/*   Updated: 2023/09/29 12:12:37 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	init_sprites(t_win *win, t_game *game)
 		"sprites/exit.xpm", &w, &h);
 	if (!game->sprts->hero || !game->sprts->tile || \
 		!game->sprts->wall || !game->sprts->coll || \
-		!game->sprts->exit || !game->sprts->opexit )
+		!game->sprts->exit || !game->sprts->opexit)
 		ft_error(2, "ERROR\nCould not open images");
 }
 
@@ -58,12 +58,15 @@ void	render_map(t_game *game, t_win *win)
 				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, \
 					game->sprts->hero, x * 64, y * 64);
 			else if (game->map[y][x] == 'E')
-			{
-				mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, \
-					game->sprts->exit, x * 64, y * 64);
-				game->sprts->expos.y = y;
-				game->sprts->expos.x = x;
-			}
+				exit_pos(game, win, x, y);
 		}
 	}
+}
+
+void	exit_pos(t_game *game, t_win *win, int x, int y)
+{
+	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, \
+		game->sprts->exit, x * 64, y * 64);
+	game->sprts->expos.y = y;
+	game->sprts->expos.x = x;
 }

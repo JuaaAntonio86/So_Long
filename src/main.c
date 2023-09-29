@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
+/*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 15:06:41 by ccaballe          #+#    #+#             */
-/*   Updated: 2023/09/28 14:04:44 by juanantonio      ###   ########.fr       */
+/*   Created: 2023/09/29 11:43:47 by juan-anm          #+#    #+#             */
+/*   Updated: 2023/09/29 13:35:21 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	main(int argc, char **argv)
 	t_sprites	s;
 
 	if (argc != 2)
-		ft_error(0, "ERROR\nPlease enter an argument\n");
+		ft_error(0, "ERROR: Please enter map path as argument\n");
 	init_game(argv[1], &game, &s);
 	new_program(&win, &game);
 	intro(&win, &game);
 	if (!win.mlx_ptr || !win.win_ptr)
-		ft_error(1, "ERROR\nProblems with mlx");
+		ft_error(1, "ERROR: MinilbX error\n");
 	init_sprites(&win, &game);
 	mlx_hook(game.win->win_ptr, DESTROY_WIN, 0, &close_window, &game);
 	mlx_key_hook(game.win->win_ptr, &manage_keys, &game);
@@ -69,7 +69,7 @@ void	new_program(t_win *win, t_game *game)
 	win->h = game->heig * 64;
 	win->w = game->len * 64;
 	win->mlx_ptr = mlx_init();
-	win->win_ptr = mlx_new_window (win->mlx_ptr, win->w, win->h, "clau's game");
+	win->win_ptr = mlx_new_window (win->mlx_ptr, win->w, win->h, "So_Long");
 	game->win = win;
 }
 
@@ -78,20 +78,9 @@ void	intro(t_win *win, t_game *game)
 	char	*str;
 	int		x;
 	int		y;
-	void *png;
-	int		a;
-	int		b;
-
+	
 	x = game->len * 64 / 3;
 	y = game->heig * 64 / 3;
-	str = "Welcome to my game!";
-	mlx_string_put(win->mlx_ptr, win->win_ptr, x, y, 0x00FFFFFF, str);
-	str = "Collect all the treasures";
-	mlx_string_put(win->mlx_ptr, win->win_ptr, x, y + 32, 0x00FFFFFF, str);
-	str = "and escape with the rocket";
-	mlx_string_put(win->mlx_ptr, win->win_ptr, x, y + 42, 0x00FFFFFF, str);
 	str = "Press space to start";
 	mlx_string_put(win->mlx_ptr, win->win_ptr, x, y + 74, 0x00FFFFFF, str);
-	png = mlx_xpm_file_to_image(win->mlx_ptr, "sprites/GameOver.xpm", &a, &b);
-	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, png, x , y );
 }
