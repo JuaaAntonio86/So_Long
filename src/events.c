@@ -6,7 +6,7 @@
 /*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 11:43:37 by juan-anm          #+#    #+#             */
-/*   Updated: 2023/09/29 13:42:17 by juan-anm         ###   ########.fr       */
+/*   Updated: 2023/09/29 13:47:44 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	outro(t_win *win, t_game *game)
 		while (++x < win->w)
 			mlx_pixel_put(win->mlx_ptr, win->win_ptr, x, y, 0x00000FF);
 	}
-	x = game->len * 64 / 3;
-	y = game->heig * 64 / 3;
 	png = mlx_xpm_file_to_image(win->mlx_ptr, "sprites/GameOver.xpm", &x, &y);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, png, 0, 64);
 	str = "Press ESC to exit";
