@@ -6,7 +6,7 @@
 /*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 11:43:37 by juan-anm          #+#    #+#             */
-/*   Updated: 2023/09/29 13:47:44 by juan-anm         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:48:35 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	close_window(t_game	*game)
 	exit(0);
 }
 
-void	outro(t_win *win, t_game *game)
+void	end(t_win *win, t_game *game)
 {
 	char	*str;
 	int		x;
@@ -52,7 +52,7 @@ int	manage_keys(int key, t_game	*game)
 	else if (key == SPACE && game->check.start == 0)
 	{
 		game->check.start = 1;
-		render_map(game, game->win);
+		plot_map(game, game->win);
 	}
 	else if ((key == KEY_W || key == KEY_UP) && game->check.start == 1)
 		new.y--;
@@ -66,6 +66,6 @@ int	manage_keys(int key, t_game	*game)
 		return (1);
 	move(game->win, game, new);
 	if (game->check.end == 1)
-		outro(game->win, game);
+		end(game->win, game);
 	return (0);
 }

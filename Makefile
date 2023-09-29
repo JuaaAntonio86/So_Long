@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+         #
+#    By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 16:17:44 by juanantonio       #+#    #+#              #
-#    Updated: 2023/09/28 12:43:40 by juanantonio      ###   ########.fr        #
+#    Updated: 2023/09/29 14:28:08 by juan-anm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = so_long
 
 CFLAGS = -Wall -Wextra -Werror -MMD 
 
-SRC = 	src/main.c src/map_checker.c src/path_finder.c src/events.c \
-		src/render_map.c src/movements.c
+SRC = 	src/main.c src/map_check.c src/path_find.c src/events.c \
+		src/plot_map.c src/move.c
 
 OBJS = $(SRC:.c=.o)
 DEPS = $(SRC:.c=.d)

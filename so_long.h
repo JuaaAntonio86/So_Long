@@ -6,7 +6,7 @@
 /*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:09:17 by juanantonio       #+#    #+#             */
-/*   Updated: 2023/09/29 12:37:46 by juan-anm         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:48:33 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ typedef struct s_win
 
 typedef struct s_sprites
 {
-	void	*hero;
-	void	*tile;
+	void	*player;
+	void	*floor;
 	void	*wall;
 	void	*coll;
 	void	*exit;
@@ -76,8 +76,8 @@ typedef struct s_game
 {
 	int			movements;
 	char		**map;
-	int			len;
-	int			heig;
+	int			l;
+	int			h;
 	t_check		check;
 	t_point		pos;
 	t_sprites	*sprts;
@@ -87,7 +87,7 @@ typedef struct s_game
 //main
 void	ft_error(int err, char *msg);
 void	init_game(char *ar, t_game *game, t_sprites *s);
-void	new_program(t_win *win, t_game *game);
+void	start_mlx(t_win *win, t_game *game);
 void	intro(t_win *win, t_game *game);
 
 //map_checker
@@ -100,12 +100,12 @@ void	map_dimentions(t_game *game);
 //path finder
 void	path_checker(t_game *game);
 char	**temp_map(t_game *game);
-int		valid_path(t_game *game, char **map, int row, int col);
+int		flood_fill(t_game *game, char **map, int row, int col);
 int		valid_cell(t_game *game, char **map, int row, int col);
 
 //events
 int		close_window(t_game	*game);
-void	outro(t_win *win, t_game *game);
+void	end(t_win *win, t_game *game);
 int		manage_keys(int keycode, t_game	*game);
 
 //movements
@@ -113,7 +113,7 @@ void	move(t_win *win, t_game *game, t_point new);
 void	collect_item(t_game *game, int x, int y, char item);
 
 //images
-void	render_map(t_game *game, t_win *win);
+void	plot_map(t_game *game, t_win *win);
 void	init_sprites(t_win *win, t_game *game);
 void	exit_pos(t_game *game, t_win *win, int x, int y);
 

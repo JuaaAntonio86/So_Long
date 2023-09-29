@@ -6,7 +6,7 @@
 /*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 11:43:54 by juan-anm          #+#    #+#             */
-/*   Updated: 2023/09/29 13:00:38 by juan-anm         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:08:03 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,6 @@ void	map_dimentions(t_game *game)
 	j = 0;
 	while (game->map[0][j])
 		j++;
-	game->len = j;
-	game->heig = i;
+	game->l = j;
+	game->h = i;
 }
